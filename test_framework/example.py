@@ -1,52 +1,37 @@
-from test_framework import TestCase, TestResult
-
-
-class MyTest(TestCase):
-
-    def set_up(self):
-        self.value = 10
-
-    def tear_down(self):
-        print(f'tear_down para {self.test_method_name}')
-
-    def test_success(self):
-        print('test_success - teste que passa')
-        assert self.value == 10
-
-    def test_failure(self):
-        print('test_failure - teste que falha')
-        assert self.value == 5  # Vai falhar pois value = 10
-
-    def test_error(self):
-        print('test_error - teste que gera erro')
-        result = 10 / 0  # Vai gerar ZeroDivisionError
+from test_framework import TestCase, TestResult, TestSuite
+from test_framework.test_case_test import TestCaseTest
+from test_framework.test_suite_test import TestSuiteTest
 
 
 if __name__ == '__main__':
-    print("=== Demonstração TestCase + TestResult ===\n")
-    
     result = TestResult()
+    suite = TestSuite()
     
-    # Executa teste que passa
-    print("1. Executando teste que passa:")
-    test = MyTest('test_success')
-    test.run(result)
-    print()
+    # Adicionando todos os 8 testes de TestCaseTest à suíte
+    suite.add_test(TestCaseTest('test_result_success_run'))
+    suite.add_test(TestCaseTest('test_result_failure_run'))
+    suite.add_test(TestCaseTest('test_result_error_run'))
+    suite.add_test(TestCaseTest('test_result_multiple_run'))
+    suite.add_test(TestCaseTest('test_was_set_up'))
+    suite.add_test(TestCaseTest('test_was_run'))
+    suite.add_test(TestCaseTest('test_was_tear_down'))
+    suite.add_test(TestCaseTest('test_template_method'))
     
-    # Executa teste que falha
-    print("2. Executando teste que falha:")
-    test = MyTest('test_failure')
-    test.run(result)
-    print()
+    # Adicionando todos os 3 testes de TestSuiteTest à suíte
+    suite.add_test(TestSuiteTest('test_suite_size'))
+    suite.add_test(TestSuiteTest('test_suite_success_run'))
+    suite.add_test(TestSuiteTest('test_suite_multiple_run'))
     
-    # Executa teste que gera erro
-    print("3. Executando teste que gera erro:")
-    test = MyTest('test_error')
-    test.run(result)
-    print()
+    print(f"Total de testes na suíte: {len(suite.tests)}")
     
-    # Exibe resumo final
-    print("=== Resumo da Execução ===")
+    # Executando todos os testes de uma vez usando TestSuite
+    suite.run(result)
+    
+    print(f"\n=== Resultado Final ===")
     print(result.summary())
-    print(f"Falhas: {result.failures}")
-    print(f"Erros: {result.errors}")
+    
+    if len(result.failures) > 0:
+        print(f"Falhas: {result.failures}")
+    if len(result.errors) > 0:
+        print(f"Erros: {result.errors}")
+    
