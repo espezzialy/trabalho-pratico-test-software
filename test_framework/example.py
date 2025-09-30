@@ -1,36 +1,52 @@
-from test_framework import TestCase
+from test_framework import TestCase, TestResult
 
 
 class MyTest(TestCase):
-    """
-    Exemplo de classe de teste que estende TestCase.
-    """
 
     def set_up(self):
-        print('set_up')
+        self.value = 10
 
     def tear_down(self):
-        print('tear_down')
+        print(f'tear_down para {self.test_method_name}')
 
-    def test_a(self):
-        print('test_a')
+    def test_success(self):
+        print('test_success - teste que passa')
+        assert self.value == 10
 
-    def test_b(self):
-        print('test_b')
+    def test_failure(self):
+        print('test_failure - teste que falha')
+        assert self.value == 5  # Vai falhar pois value = 10
 
-    def test_c(self):
-        print('test_c')
+    def test_error(self):
+        print('test_error - teste que gera erro')
+        result = 10 / 0  # Vai gerar ZeroDivisionError
 
 
 if __name__ == '__main__':
-    # Demonstração da execução individual de cada teste
-    print("=== Executando testes individualmente ===")
+    print("=== Demonstração TestCase + TestResult ===\n")
     
-    test = MyTest('test_a')
-    test.run()
+    result = TestResult()
     
-    test = MyTest('test_b')
-    test.run()
+    # Executa teste que passa
+    print("1. Executando teste que passa:")
+    test = MyTest('test_success')
+    test.run(result)
+    print()
     
-    test = MyTest('test_c')
-    test.run()
+    # Executa teste que falha
+    print("2. Executando teste que falha:")
+    test = MyTest('test_failure')
+    test.run(result)
+    print()
+    
+    # Executa teste que gera erro
+    print("3. Executando teste que gera erro:")
+    test = MyTest('test_error')
+    test.run(result)
+    print()
+    
+    # Exibe resumo final
+    print("=== Resumo da Execução ===")
+    print(result.summary())
+    print(f"Falhas: {result.failures}")
+    print(f"Erros: {result.errors}")

@@ -10,17 +10,24 @@ class TestCase:
         """
         self.test_method_name = test_method_name
 
-    def run(self):
+    def run(self, result):
         """
         Template method que executa o teste seguindo o padrão:
-        1. Chama set_up() para preparar o ambiente
-        2. Executa o método de teste especificado
-        3. Chama tear_down() para limpar o ambiente
+        1. Registra início do teste no result
+        2. Chama set_up() para preparar o ambiente
+        3. Executa o método de teste especificado (com tratamento de exceções)
+        4. Chama tear_down() para limpar o ambiente
         """
-        self.set_up()    # chama método de setup
-        test_method = getattr(self, self.test_method_name)
-        test_method()    # chama método de teste 
-        self.tear_down() # chama método de teardown 
+        result.test_started()
+        self.set_up()
+        try:
+            test_method = getattr(self, self.test_method_name)
+            test_method()  
+        except AssertionError as e:
+            result.add_failure(self.test_method_name)
+        except Exception as e:
+            result.add_error(self.test_method_name)
+        self.tear_down()    
 
     def set_up(self):
         """
