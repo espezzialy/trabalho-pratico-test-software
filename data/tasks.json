@@ -1,0 +1,39 @@
+[
+  {
+    "titulo": "Estudar para prova",
+    "descricao": "Revisar capítulos 1-5",
+    "prioridade": "alta",
+    "status": "pendente",
+    "tags": [
+      "estudo",
+      "urgente"
+    ],
+    "data_criacao": "2025-11-24T22:06:40.110692",
+    "data_vencimento": "2025-11-30",
+    "data_conclusao": null
+  },
+  {
+    "titulo": "Fazer exercícios",
+    "descricao": "",
+    "prioridade": "baixa",
+    "status": "concluida",
+    "tags": [
+      "saúde"
+    ],
+    "data_criacao": "2025-11-24T22:06:44.914688",
+    "data_vencimento": null,
+    "data_conclusao": "2025-11-24T22:06:57.962852"
+  },
+  {
+    "titulo": "Projeto de Software",
+    "descricao": "Implementar testes",
+    "prioridade": "media",
+    "status": "pendente",
+    "tags": [
+      "trabalho"
+    ],
+    "data_criacao": "2025-11-24T22:06:45.027980",
+    "data_vencimento": null,
+    "data_conclusao": null
+  }
+]

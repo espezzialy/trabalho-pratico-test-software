@@ -1,0 +1,6 @@
+# Core dependencies
+# (nenhuma dependência externa para o código principal - usa apenas biblioteca padrão)
+
+# Development dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0
