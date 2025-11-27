@@ -35,5 +35,51 @@
     "data_criacao": "2025-11-24T22:06:45.027980",
     "data_vencimento": null,
     "data_conclusao": null
+  },
+  {
+    "titulo": "Estudar Python",
+    "descricao": "",
+    "prioridade": "media",
+    "status": "pendente",
+    "tags": [],
+    "data_criacao": "2025-11-24T19:19:43.546908",
+    "data_vencimento": null,
+    "data_conclusao": null
+  },
+  {
+    "titulo": "Fazer compras",
+    "descricao": "Ir ao supermercado",
+    "prioridade": "alta",
+    "status": "pendente",
+    "tags": [
+      "casa",
+      "urgente"
+    ],
+    "data_criacao": "2025-11-24T19:20:01.788248",
+    "data_vencimento": "2025-11-25",
+    "data_conclusao": null
+  },
+  {
+    "titulo": "realizar apresentação",
+    "descricao": "",
+    "prioridade": "media",
+    "status": "pendente",
+    "tags": [],
+    "data_criacao": "2025-11-27T15:38:03.667898",
+    "data_vencimento": null,
+    "data_conclusao": null
+  },
+  {
+    "titulo": "Fazer compras 2",
+    "descricao": "Ir ao supermercado",
+    "prioridade": "alta",
+    "status": "pendente",
+    "tags": [
+      "casa",
+      "urgente"
+    ],
+    "data_criacao": "2025-11-27T15:38:42.846275",
+    "data_vencimento": "2025-11-25",
+    "data_conclusao": null
   }
 ]
